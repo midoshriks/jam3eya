@@ -1,0 +1,30 @@
+jam3eya/
+│
+├─ config/
+│   └─ db.js
+│
+├─ models/
+│   └─ userModel.js
+│
+├─ controllers/
+│   └─ authController.js
+│
+├─ routes/
+│   └─ authRoutes.js
+│
+├─ views/
+│   ├─ auth/
+│   │   ├─ login.ejs
+│   │   └─ register.ejs
+│   └─ users.ejs
+│
+├─ server.js
+└─ package.json
+
+
+
+npm init -y
+npm install express mysql2 bcryptjs jsonwebtoken body-parser
+
+npm install --save-dev nodemon
+npm run dev

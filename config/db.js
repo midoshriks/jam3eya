@@ -1,15 +1,25 @@
 import mysql from "mysql2/promise";
-import dotenv from "dotenv";
-dotenv.config();
 
-export const db = await mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+// الاتصال بقاعدة البيانات باستخدام متغيرات البيئة
+export const connectDB = async () => {
+  try {
+    const db = await mysql.createConnection({
+      host: process.env.MYSQLHOST,
+      user: process.env.MYSQLUSER,
+      password: process.env.MYSQLPASSWORD,
+      database: process.env.MYSQLDATABASE,
+      port: process.env.MYSQLPORT || 3306,
+    });
 
-console.log("✅ Connected to MySQL (Railway)");
+    console.log("✅ Connected to MySQL");
+    return db;
+  } catch (err) {
+    console.error("❌ DB connection failed:", err);
+    process.exit(1); // إنهاء السيرفر إذا فشل الاتصال
+  }
+};
+
+
 
 
 // // config/db.js

@@ -1,32 +1,27 @@
-// config/db.js
 import mysql from "mysql2/promise";
+import dotenv from "dotenv";
+dotenv.config();
 
-// إنشاء الاتصال كـ Promise
 export const db = await mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "jam3eya"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-console.log("✅ Connected to MySQL (Promise version)");
+console.log("✅ Connected to MySQL (Railway)");
 
 
-// config/db.js
+// // config/db.js
+// import mysql from "mysql2/promise";
 
-// import mysql from "mysql2";
-
-// export const db = mysql.createConnection({
+// // إنشاء الاتصال كـ Promise
+// export const db = await mysql.createConnection({
 //   host: "localhost",
 //   user: "root",
 //   password: "",
 //   database: "jam3eya"
 // });
 
-// db.connect(err => {
-//     if (err) throw err;
-//     console.log("✅ Connected to MySQL");
-// });
+// console.log("✅ Connected to MySQL (Promise version)");
 
-// // نسخة Promises
-// export const dbPromise = db.promise();

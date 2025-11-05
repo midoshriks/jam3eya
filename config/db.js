@@ -1,28 +1,20 @@
 import mysql from "mysql2/promise";
 
-// الاتصال بقاعدة البيانات باستخدام متغيرات البيئة
-export const connectDB = async () => {
-  try {
-    const db = await mysql.createConnection({
-      host: process.env.MYSQLHOST,
-      user: process.env.MYSQLUSER,
-      password: process.env.MYSQLPASSWORD,
-      database: process.env.MYSQLDATABASE,
-      port: process.env.MYSQLPORT || 3306,
-    });
+export const db = await mysql.createConnection({
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT || 3306,
+});
 
-    console.log("✅ Connected to MySQL");
-    return db;
-  } catch (err) {
-    console.error("❌ DB connection failed:", err);
-    process.exit(1); // إنهاء السيرفر إذا فشل الاتصال
-  }
-};
+console.log("✅ Connected to MySQL");
 
 
 
 
-// // config/db.js
+
+// // // config/db.js
 // import mysql from "mysql2/promise";
 
 // // إنشاء الاتصال كـ Promise
